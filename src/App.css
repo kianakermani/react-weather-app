@@ -1,1 +1,13 @@
+.container {
+  margin-top: 60px;
+  border-radius: 10px;
+  padding: 20px 25px;
+  background-color: rgb(192, 219, 255);
+  box-shadow: 5px 5px 18px rgb(11, 9, 73);
+}
 
+.App {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}

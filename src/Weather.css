@@ -1,1 +1,136 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+.Search {
+  border: 2px solid rgb(41, 10, 99);
+  border-radius: 10px;
+  padding: 1px 3px;
+  margin: 0 60px;
+}
+.sbox {
+  background-color: transparent;
+  border-width: 0px;
+  border: none;
+  outline: none;
+  font-size: larger;
+  padding: 2px 14px;
+  text-transform: capitalize;
+  width: 100%;
+}
+.but {
+  background-color: transparent;
+  border: none;
+  font-size: 120%;
+  border-radius: 20px;
+  max-width: 120px;
+}
+.but:hover {
+  color: rgb(241, 248, 253);
+}
+
+#searchbtn {
+  padding-right: 0;
+}
+#currentbtn {
+  padding-right: 0;
+}
+
+.sec1 {
+  border: 2px solid rgb(41, 10, 99);
+  border-radius: 10px;
+  margin: 35px 60px;
+  padding-top: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.temoji {
+  position: relative;
+  bottom: 20px;
+  font-size: larger;
+}
+.we1 {
+  text-align: center;
+  padding-left: 10px;
+}
+.we2 {
+  padding-top: 30px;
+  padding-right: 5px;
+  padding-left: 10px;
+}
+.we3 {
+  padding-top: 20px;
+  margin-right: 20px;
+}
+.deg {
+  font-weight: bold;
+  font-size: 200%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.vl {
+  border-left: 2px solid rgb(41, 10, 99);
+  opacity: 0.4;
+  height: 173px;
+  padding-right: 8px;
+  margin-bottom: 5px;
+}
+.we4 {
+  line-height: 1.7;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+@media (max-width: 769px) {
+  .container {
+    margin-top: 0px;
+  }
+  .but {
+    margin: 0 auto;
+  }
+  .sec1 {
+    display: block;
+    text-align: center;
+    max-height: 560px;
+  }
+  .vl {
+    border-left: none;
+    border-bottom: 2px solid rgb(41, 10, 99);
+    width: 180px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 160px;
+  }
+  .we2 {
+    padding-top: 0;
+  }
+  .we4 {
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    bottom: 150px;
+  }
+  .sec2 {
+    display: none;
+  }
+  .we1 {
+    position: relative;
+    right: 5px;
+  }
+  .deg {
+    position: relative;
+    left: 10px;
+  }
+  .C {
+    position: relative;
+    left: 10px;
+  }
+}

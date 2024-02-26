@@ -13,8 +13,18 @@ export default function Weather() {
                 className="sbox"
               />
             </div>
-            <input type="submit" value="Search 🔍" className="but col-md-3" />
-            <input type="button" value="Current" className="col-md-3" />
+            <input
+              type="submit"
+              value="Search 🔍"
+              id="searchbtn"
+              className="but col-md-3"
+            />
+            <input
+              type="button"
+              value="Current"
+              id="currentbtn"
+              className=" but col-md-3"
+            />
           </div>
         </div>
       </form>
@@ -33,17 +43,17 @@ export default function Weather() {
         </div>
         <div className="we2">
           <h4>New York</h4>
-          <span></span>
+          <span id="date">26 February , Monday 16:16</span>
         </div>
         <div className="we3">
-          <h4 className="deg">
-            <span>10</span>°C
-            <span className="c">
-              <span id="tempHigh">12</span>°/<span id="tempLow">7</span>° feels
-              like
-              <span id="feelslike">8</span>°
-            </span>
+          <h4 class="deg">
+            <span id="degree">10</span>°C
           </h4>
+          <span class="C">
+            <span id="tempHigh">12</span>°/<span id="tempLow">7</span>° feels
+            like
+            <span id="feelslike"> 8</span>°
+          </span>
         </div>
         <div className="vl"></div>
         <div className="we4">
