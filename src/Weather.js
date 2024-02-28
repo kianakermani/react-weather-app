@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Date from "./Date";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -7,6 +8,7 @@ export default function Weather(props) {
   const [wdata, setWdata] = useState({});
   function handle(r) {
     console.log(r.data);
+
     setWdata({
       temp: Math.round(r.data.main.temp),
       wind: r.data.wind.speed,
@@ -17,6 +19,7 @@ export default function Weather(props) {
       min: Math.round(r.data.main.temp_min),
       feel: Math.round(r.data.main.feels_like),
       icon: r.data.weather[0].icon,
+      date: new Date(r.data.dt * 1000),
     });
     setReady(true);
   }
@@ -64,7 +67,9 @@ export default function Weather(props) {
           </div>
           <div className="we2">
             <h4>{wdata.city}</h4>
-            <span id="date">date</span>
+            <span id="date">
+              <Date value={wdata.date} />
+            </span>
           </div>
           <div className="we3">
             <h4 className="deg">
