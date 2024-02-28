@@ -6,9 +6,9 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1>
-          Weather App <i class="fa-solid fa-cloud-bolt"></i>
+          Weather App <i className="fa-solid fa-cloud-bolt"></i>
         </h1>
-        <Weather />
+        <Weather city="Tehran" />
 
         <footer>
           This project was coded by{" "}
