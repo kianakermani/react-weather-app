@@ -7,6 +7,7 @@ export default function Weather(props) {
   const [ready, setReady] = useState(false);
   const [wdata, setWdata] = useState({});
   const [city, setCity] = useState(props.city);
+
   function handle(r) {
     console.log(r.data);
 
@@ -20,7 +21,7 @@ export default function Weather(props) {
       min: Math.round(r.data.main.temp_min),
       feel: Math.round(r.data.main.feels_like),
       icon: r.data.weather[0].icon,
-      date: new Date(r.data.dt * 1000),
+      date: r.data.dt * 1000,
     });
     setReady(true);
   }
