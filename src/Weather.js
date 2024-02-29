@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Date from "./Date";
+import Forecast from "./Forecast";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -107,6 +108,7 @@ export default function Weather(props) {
             AQI: <span id="aqi">{aqi.data}</span>
           </div>
         </div>
+        <Forecast />
       </div>
     );
   } else {
