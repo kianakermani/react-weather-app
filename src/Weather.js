@@ -6,11 +6,10 @@ import "./Weather.css";
 export default function Weather(props) {
   const [ready, setReady] = useState(false);
   const [wdata, setWdata] = useState({});
+  const [aqi, setAqi] = useState({});
   const [city, setCity] = useState(props.city);
 
   function handle(r) {
-    console.log(r.data);
-
     setWdata({
       temp: Math.round(r.data.main.temp),
       wind: r.data.wind.speed,
@@ -26,6 +25,10 @@ export default function Weather(props) {
     setReady(true);
   }
 
+  function handleAqi(r) {
+    setAqi({ data: r.data.data.aqi });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -37,8 +40,11 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "aa09763d916df0424c840d55bfc2d2c9";
+    // const aqiKey = "1f4cba53146181e48c2aeb1f4746903446e654a4";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let urlAqi = `https://api.waqi.info/feed/${city}/?token=1f4cba53146181e48c2aeb1f4746903446e654a4`;
     axios.get(url).then(handle);
+    axios.get(urlAqi).then(handleAqi);
   }
 
   if (ready) {
@@ -104,7 +110,7 @@ export default function Weather(props) {
           <div className="we4">
             Wind: <span id="wind">{wdata.wind}</span>km/h <br />
             Humidity: <span id="humidity"> {wdata.humidity}</span>% <br />
-            AQI: <span id="aqi">110</span>
+            AQI: <span id="aqi">{aqi.data}</span>
           </div>
         </div>
       </div>
