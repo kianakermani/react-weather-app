@@ -4,7 +4,12 @@ import "moment-timezone";
 
 export default function Date(props) {
   const dateObject = moment(props.value);
-  const formattedDate = dateObject.format("dddd,     h:mm a");
+  const day = dateObject.format("dddd");
+  const time = dateObject.format("h:mm a");
 
-  return <div>{formattedDate}</div>;
+  return (
+    <div>
+      {day} {time}
+    </div>
+  );
 }

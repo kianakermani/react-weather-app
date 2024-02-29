@@ -11,3 +11,9 @@
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
 }
+
+@media (max-width: 769px) {
+  .container {
+    margin-top: 0px;
+  }
+}

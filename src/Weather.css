@@ -90,16 +90,13 @@ a {
 }
 
 @media (max-width: 769px) {
-  .container {
-    margin-top: 0px;
-  }
   .but {
     margin: 0 auto;
   }
   .sec1 {
     display: block;
     text-align: center;
-    max-height: 560px;
+    max-height: 450px;
   }
   .vl {
     border-left: none;
