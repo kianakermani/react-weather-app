@@ -22,6 +22,7 @@ export default function Weather(props) {
       feel: Math.round(r.data.main.feels_like),
       icon: r.data.weather[0].icon,
       date: r.data.dt * 1000,
+      coordinates: r.data.coord,
     });
     setReady(true);
   }
@@ -108,7 +109,7 @@ export default function Weather(props) {
             AQI: <span id="aqi">{aqi.data}</span>
           </div>
         </div>
-        <Forecast />
+        <Forecast coordinates={wdata.coordinates} />
       </div>
     );
   } else {

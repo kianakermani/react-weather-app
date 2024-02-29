@@ -1,9 +1,23 @@
 .sec2 {
-  text-align: center;
   line-height: 1.7;
   font-size: x-large;
   font-weight: bold;
   transition: 150ms ease-in-out;
+  padding-right: 45px;
+  margin-bottom: 20px;
+}
+
+.day {
+  text-align: center;
+  margin-left: 3px;
+}
+
+.temp {
+  margin-left: 10px;
+}
+
+.element {
+  margin: 0 auto;
 }
 .sec2:hover {
   background-color: rgb(155, 197, 252);
