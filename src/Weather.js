@@ -8,10 +8,12 @@ export default function Weather({ city: initialCity }) {
   const [city, setCity] = useState(initialCity);
   const [wdata, setWdata] = useState(null);
   const [aqi, setAqi] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!city) return;
+
     const fetchData = async () => {
       setLoading(true);
       setError(null);
@@ -52,6 +54,8 @@ export default function Weather({ city: initialCity }) {
         } else {
           setError("Something went wrong 😵");
         }
+        setWdata(null);
+        setAqi(null);
       } finally {
         setLoading(false);
       }
@@ -62,14 +66,13 @@ export default function Weather({ city: initialCity }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCity(e.target.elements.cityInput.value.trim());
+    const value = e.target.elements.cityInput.value.trim();
+    if (value) setCity(value);
   };
-
-  if (loading) return <div className="Weather">Loading...</div>;
-  if (error) return <div className="Weather error">{error}</div>;
 
   return (
     <div className="Weather">
+      {/* فرم همیشه visible */}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="Search row">
           <div className="col-md-9">
@@ -78,7 +81,7 @@ export default function Weather({ city: initialCity }) {
               type="search"
               placeholder="Type a city name..."
               className="sbox"
-              defaultValue={city}
+              defaultValue={city || ""}
               autoFocus
             />
           </div>
@@ -86,35 +89,44 @@ export default function Weather({ city: initialCity }) {
         </div>
       </form>
 
-      <div className="sec1">
-        <div className="we1">
-          <img
-            src={`http://openweathermap.org/img/wn/${wdata.icon}@2x.png`}
-            alt="weather icon"
-          />
-          <span className="temoji text-capitalize">{wdata.description}</span>
-        </div>
+      {/* پیام خطا */}
+      {error && <div className="Weather error">{error}</div>}
 
-        <div className="we2">
-          <h4>{wdata.city}</h4>
-          <Date value={wdata.date} />
-        </div>
+      {/* Loading */}
+      {loading && <div className="loading">Loading...</div>}
 
-        <div className="we3">
-          <h4>{wdata.temp}°C</h4>
-          <span>
-            {wdata.max}° / {wdata.min}° feels like {wdata.feel}°
-          </span>
-        </div>
+      {/* داده‌ها */}
+      {wdata && !error && !loading && (
+        <div className="sec1">
+          <div className="we1">
+            <img
+              src={`http://openweathermap.org/img/wn/${wdata.icon}@2x.png`}
+              alt="weather icon"
+            />
+            <span className="temoji text-capitalize">{wdata.description}</span>
+          </div>
 
-        <div className="we4">
-          Wind: {wdata.wind} km/h <br />
-          Humidity: {wdata.humidity}% <br />
-          AQI: {aqi ?? "—"}
-        </div>
-      </div>
+          <div className="we2">
+            <h4>{wdata.city}</h4>
+            <Date value={wdata.date} />
+          </div>
 
-      <Forecast coordinates={wdata.coordinates} />
+          <div className="we3">
+            <h4>{wdata.temp}°C</h4>
+            <span>
+              {wdata.max}° / {wdata.min}° feels like {wdata.feel}°
+            </span>
+          </div>
+
+          <div className="we4">
+            Wind: {wdata.wind} km/h <br />
+            Humidity: {wdata.humidity}% <br />
+            AQI: {aqi ?? "—"}
+          </div>
+
+          <Forecast coordinates={wdata.coordinates} />
+        </div>
+      )}
     </div>
   );
 }
